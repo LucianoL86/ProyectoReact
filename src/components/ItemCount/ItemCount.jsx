@@ -1,32 +1,37 @@
 import React, {useState} from "react";
 import styles from './itemcount.module.css'
 
-const ItemCount = () => {
+const ItemCount = ({stock, initial, onAdd}) => {
     
-    const [counter, setCounter] = useState(0)
+    const [quantity, setQuantity] = useState(initial)
     
-    const sumar = () => {
-        setCounter(counter + 1)
+    const increment = () => {
+        if(quantity < stock) {
+            setQuantity(quantity + 1)
+        }
     }
 
-    const restar = () => {
-        if(counter > 0) {
-            setCounter(counter - 1)   
+    const decrement = () => {
+        if(quantity > 1) {
+            setQuantity(quantity - 1)   
         }
     }
 
     const reset = () => {
-        setCounter(0)
+        setQuantity(0)
     }
     
     return(
         <>
-        <p className={styles['cantidad']}>Cantidad: {counter}</p>
-        <div className={styles['botones']}>
-            <button className={styles["btn"]} onClick={sumar}>➕</button>
-            <button className={styles["btn"]} onClick={restar}>➖</button>
-            <button className={styles["btn"]} onClick={reset}>🔄</button>
-        </div>
+            <p className={styles['cantidad']}>Cantidad: {quantity}</p>
+            <div className={styles['botones']}>
+                <button className={styles["btn"]} onClick={decrement}>➖</button>
+                <button className={styles["btn"]} onClick={increment}>➕</button>
+                <button className={styles["btn"]} onClick={reset}>🔄</button>
+            </div>
+            <div>
+                <button className={styles['agregar']} onClick={() => onAdd(quantity)} disabled={!stock}>Agregar al carrito</button>
+            </div>
         </>
     )
 }

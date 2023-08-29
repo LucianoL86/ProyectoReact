@@ -6,8 +6,8 @@ const CartWidget = () => {
     return (
         <div className={styles["cartIcon"]}>
             <CgShoppingCart className={styles['cart']} />
-            <p>1</p>
-        </div>
+            <p className={styles['amount']}>1</p>
+        </div> 
     )
 }
 

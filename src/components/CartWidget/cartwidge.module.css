@@ -4,8 +4,9 @@
     margin-right: 30px;
 }
 
-.cartIcon p {
+.amount {
     font-size: 20px;
+    margin-bottom: 0;    
 }
 
 .cart {

@@ -16,8 +16,7 @@ const ItemDetail = ({title, price, author, image, category, editorial, review}) 
                     <Card.Title>{category}</Card.Title>
                     <Card.Title>{editorial}</Card.Title>
                     <p>{review}</p>
-                    <ItemCount/>
-                    <Button variant="primary" className={styles['agregar']}>Agregar al carrito</Button>
+                    <ItemCount initial={1} stock={10} onAdd={(quantity) => console.log('Cantidad agregada: ' + quantity)} />
                 </Card.Body>
             </Card>
         </div>

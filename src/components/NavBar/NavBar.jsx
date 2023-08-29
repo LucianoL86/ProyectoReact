@@ -37,13 +37,13 @@ const NavBar = () => {
                                 <Form className="d-flex">
                                     <Form.Control
                                         type="search"
-                                        placeholder="Ingrese título o autor"
+                                        placeholder="Ingrese título"
                                         className="me-2"
                                         aria-label="Search"
                                     />
-                                    <Button variant="outline-success" className='me-5'>Buscar</Button>
+                                    <Button as={Link} to='/title' variant="outline-success" className='me-5'>Buscar</Button>
                                 </Form>
-                                <Link to='cart'><CartWidget/></Link> 
+                                <Link to='cart' className={styles['cart']}><CartWidget/></Link> 
                     </Navbar.Collapse>                 
                 </Container>
             </Navbar>
