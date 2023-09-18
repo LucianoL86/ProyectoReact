@@ -1,46 +1,48 @@
 import React, { useEffect, useState } from 'react'
-import orderProducts from '../../helpers/orderProducts'
+import { getFirestore } from '../../firebase/config'
 import ItemList from '../ItemList/ItemList'
 import { ImSpinner3 } from 'react-icons/im'
 import styles from './itemlistcontainer.module.css'
 import { useParams } from 'react-router-dom'
 
-const ItemListContainer = ({}) => {
+
+const ItemListContainer = ({ }) => {
 
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(false)
-    const {id} = useParams()
+    const [error, setError] = useState(false)
+    const { id } = useParams()
+
 
     useEffect(() => {
-        // Se inicia el montaje con un loading en true
         setLoading(true)
-        orderProducts()
-            .then((response) => {
-                // Se imprime respuesta y se guarda en el hook
-                if(id) {
-                    setItems(response.filter(libros => libros.category === id))
-                }else {
-                    setItems(response)
-                }              
-            })
-            // Consoleamos errores
-            .catch((error) => console.log(error))
-            .finally(() => {setLoading(false)})
 
-
-    }, [id])
-
+        const db = getFirestore()
+        const products = id ? db.collection('products').where('category', '==', id)
+            : db.collection('products')
+            products.get()
+                .then((res) => {
+                    const newItem = res.docs.map((doc) => {
+                        return { id: doc.id, ...doc.data() }
+                    })
+                    console.table(newItem)
+                    setItems(newItem)
+                })
+                .catch((error) => setError(true))
+                .finally(() => {
+                    setLoading(false)
+                }
+            )
+    }, [id, setLoading])
+        
     // El componente arranca con el loading en true y cuando resuelve imprime en pantalla el componente ItemList
     return (
-        <>
-            {
-                loading ? 
-                <div className={styles['spinner']}>
-                    <ImSpinner3/>
-                </div>
+        loading ?
+            <div className={styles['spinner']}>
+                <ImSpinner3 />
+            </div> : error ? "ERROR"
                 : <ItemList products={items} />
-            }
-        </>
+
     )
 }
 

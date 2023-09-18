@@ -1,3 +1,10 @@
 .item {
-    margin: 5px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.buttonsDetail {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }

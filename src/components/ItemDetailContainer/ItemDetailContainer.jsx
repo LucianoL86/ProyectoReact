@@ -1,4 +1,4 @@
-import orderProducts from '../../helpers/orderProducts'
+import {getFirestore} from '../../firebase/config.js'
 import { ImSpinner3 } from 'react-icons/im'
 import { useState, useEffect } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
@@ -9,16 +9,21 @@ const ItemDetailContainer = () => {
 
     const [items, setItems] = useState({})
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
     const {id} = useParams()
-
 
     useEffect (() => {
         setLoading(true)
-        orderProducts()
-            .then(response => {
-                setItems(response.find(libros => libros.id === Number(id)))
+
+        const db = getFirestore()
+        const products = db.collection('products')
+        const item = products.doc(id)
+
+        item.get()
+            .then((doc) => {
+                setItems({id: id.doc, ...doc.data()})
             })
-            .catch((error) => console.log(error))
+            .catch((error) => setError(true))
             .finally(() => {
                 setLoading(false)
             })
@@ -27,7 +32,7 @@ const ItemDetailContainer = () => {
     return (
         <div>
             {
-                loading ? <ImSpinner3/> :
+                loading ? <ImSpinner3/> : error ? "ERROR" :
                 <ItemDetail {...items}/>
             }
         </div>
