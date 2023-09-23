@@ -19,7 +19,7 @@ Para utilizar esta aplicación, sigue estos pasos:
 
 - **Simulación de Compra: Al hacer click en el botón "Finalizar compra", el usuario debe completar un formulario con sus datos personales, esto simula la compra de los productos en el carrito, modifica el stock de los productos comprados en Firebase y el usuario recibe un número de compra.
 
-- **Carrito Persistente: Los productos en el carrito se almacenan en el almacenamiento local (local storage) de cada usuario. Esto permite que los usuarios accedan a su carrito incluso si cierran sesión y vuelven a iniciarla.
+- **Carrito Persistente: Los productos en el carrito se almacenan en el almacenamiento local (local storage) de cada usuario. Esto permite que los usuarios accedan a su carrito incluso si cierran el sitio y vuelven a abrirlo.
 
 ## Dependencias
 
