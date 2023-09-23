@@ -13,7 +13,21 @@ export const CartProvider = ({ children }) => {
     }, [cart])
 
     const insideTheCart = (item) => {
-        setCart([...cart, item])
+        const existingItem = cart.find((cartItem) => cartItem.id === item.id)
+        if (existingItem) {
+            const updatedCart = cart.map((cartItem) => {
+                if (cartItem.id === item.id) {
+                    return {
+                        ...cartItem,
+                        counter: cartItem.counter + 1,
+                    };
+                }
+                return cartItem
+            })
+            setCart(updatedCart)
+        } else {
+            setCart([...cart, item])
+        }
     }
 
     const calculateQuantity = () => {
@@ -24,9 +38,9 @@ export const CartProvider = ({ children }) => {
         return cart.reduce((acc, prod) => acc + prod.price * prod.counter, 0)
     }
 
-    const removeItem = (itemId) => { 
-            const newCart = cart.filter((prod) => prod.id !== itemId)
-            setCart(newCart)
+    const removeItem = (itemId) => {
+        const newCart = cart.filter((prod) => prod.id !== itemId)
+        setCart(newCart)
     }
 
     const emptyCart = () => {

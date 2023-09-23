@@ -21,7 +21,7 @@ const ItemDetailContainer = () => {
 
         item.get()
             .then((doc) => {
-                setItems({id: id.doc, ...doc.data()})
+                setItems({id: id, ...doc.data()})
             })
             .catch((error) => setError(true))
             .finally(() => {

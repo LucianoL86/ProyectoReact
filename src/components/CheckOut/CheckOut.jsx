@@ -31,9 +31,7 @@ const CheckOut = () => {
             priceTotal: totalPrice(),
             data: firebase.firestore.Timestamp.fromDate(new Date())
         }
-        console.log(order)
 
-        // Función para enviar la orden a firebase
         const db = getFirestore()
         const orders = db.collection('orders')
 

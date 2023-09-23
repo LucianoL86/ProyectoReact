@@ -6,7 +6,7 @@ import { CartContext } from '../../context/CartContext'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-const ItemDetail = ({ title, price, author, image, category, editorial, description, stock }) => {
+const ItemDetail = ({ id, title, price, author, image, category, editorial, description, stock }) => {
 
     const { insideTheCart } = useContext(CartContext)
     const [counter, setCounter] = useState(0)
@@ -14,6 +14,7 @@ const ItemDetail = ({ title, price, author, image, category, editorial, descript
     const addToCart = () => {
         if (counter >= 1) {
             const newItem = {
+                id,
                 title,
                 author,
                 price,
@@ -36,7 +37,6 @@ const ItemDetail = ({ title, price, author, image, category, editorial, descript
         navigate(-1)
     }
 
-    //  Se pasa mediante props cada propiedad de los productos (objetos)
     return (
         <div className='container d-flex justify-content-center text-center'>
             <Card style={{ width: '18rem' }}>
@@ -46,7 +46,7 @@ const ItemDetail = ({ title, price, author, image, category, editorial, descript
                 <Card.Body>
                     <Card.Title>${price}</Card.Title>
                     <Card.Title>{category}</Card.Title>
-                    <Card.Title>Editorial:{editorial}</Card.Title>
+                    <Card.Title>Editorial: {editorial}</Card.Title>
                     <p>{description}</p>
                     <ItemCount max={stock} modify={setCounter} amount={counter} />
                     <div className={styles['buttonsDetail']}>

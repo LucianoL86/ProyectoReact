@@ -25,7 +25,6 @@ const ItemListContainer = ({ }) => {
                     const newItem = res.docs.map((doc) => {
                         return { id: doc.id, ...doc.data() }
                     })
-                    console.table(newItem)
                     setItems(newItem)
                 })
                 .catch((error) => setError(true))
@@ -35,7 +34,6 @@ const ItemListContainer = ({ }) => {
             )
     }, [id, setLoading])
         
-    // El componente arranca con el loading en true y cuando resuelve imprime en pantalla el componente ItemList
     return (
         loading ?
             <div className={styles['spinner']}>

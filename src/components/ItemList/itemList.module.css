@@ -4,6 +4,8 @@
     flex-wrap: wrap;
 }
 
-h3 {
+h2 {
     text-align: center;
+    padding-top: 50px;
+    font-family: 'Raleway', sans-serif;
 }

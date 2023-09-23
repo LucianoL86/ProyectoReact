@@ -4,13 +4,15 @@ import ItemListContainer from '../components/ItemListContainer/ItemListContainer
 import NavBar from '../components/NavBar/NavBar';
 import Cart from '../components/Cart/Cart';
 import CheckOut from '../components/CheckOut/CheckOut';
+import Home from '../pages/Home';
 
 const MainRouter = () => {
     return (
         <BrowserRouter>
             <NavBar />
             <Routes>
-                <Route path="/" element={<ItemListContainer />} />
+                <Route path='/' element={<Home />} />
+                <Route path="/catalogue" element={<ItemListContainer />} />
                 <Route path="/category/:id" element={<ItemListContainer />} />
                 <Route path='/item/:id' element={<ItemDetailContainer />} />
                 <Route path='/cart' element={<Cart />} />

@@ -1,7 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -22,27 +20,17 @@ const NavBar = () => {
                     <Navbar.Collapse id="navbarScroll">
                             <Nav
                                 className="me-auto my-2 my-lg-3"
-                                style={{ width: '100%', maxHeight: '100px', display: 'flex', justifyContent: 'space-around'  }}
+                                style={{ width: '100%', maxHeight: '100px', display: 'flex', justifyContent: 'end' }}
                                 navbarScroll
                             >
                                 <Nav.Link as={Link} to='/'>Inicio</Nav.Link>
-                                <Nav.Link as={Link} to='/destacados'>Destacados</Nav.Link>
+                                <Nav.Link as={Link} to='/catalogue'>Catálogo</Nav.Link>
                                 <NavDropdown title="Categorías" id="navbarScrollingDropdown">
                                     <NavDropdown.Item as={Link} to='/category/Historia'>Historia</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to='/category/Filosofia'> Filosofía</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to='/category/Novelas'>Novelas</NavDropdown.Item>                                 
                                 </NavDropdown>
-                                <Nav.Link as={Link} to='contacto'>Contacto</Nav.Link> 
                             </Nav>                                               
-                                <Form className="d-flex">
-                                    <Form.Control
-                                        type="search"
-                                        placeholder="Ingrese título"
-                                        className="me-2"
-                                        aria-label="Search"
-                                    />
-                                    <Button as={Link} to='/title' variant="outline-success" className='me-5'>Buscar</Button>
-                                </Form>
                                 <Link to='cart' className={styles['cart']}><CartWidget/></Link> 
                     </Navbar.Collapse>                 
                 </Container>

@@ -1,0 +1,46 @@
+.hero {
+    background-image: url(../../public/asset/hero.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 700px;
+}
+
+h1, h3 {
+    text-align: center;
+    margin: 40px;
+    font-family: 'Raleway', sans-serif;
+}
+
+p {
+    font-size: 18px;
+}
+
+.container, .containerReverse {
+    box-shadow: 0.2rem 0.3rem 1.2rem 0.1rem rgb(111 121 131);
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.content {
+    width: 800px;
+}
+
+.containerReverse {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.containerReverse img {
+    height: 200px;
+}
+

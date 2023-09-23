@@ -23,7 +23,7 @@ const Cart = () => {
                         <hr />
                         {
                             cart.map((prod) => (
-                                <div className={style['list']}>
+                                <div className={style['list']} key={prod.id}>
                                     <p>Título: {prod.title}</p>
                                     <p>Autor: {prod.author}</p>
                                     <img src={prod.image} className={style['image']} />
@@ -41,7 +41,7 @@ const Cart = () => {
                             <hr />
                             <Button className='btn btn-danger mx-4 my-2' onClick={emptyCart}>Vaciar carrito</Button>
                             <Link className='btn btn-primary' to='/checkout'>Finalizar compra</Link>
-                            <Link to='/' className='btn btn-primary mx-4'>Volver a Inicio</Link>
+                            <Link to='/catalogue' className='btn btn-primary mx-4'>Volver al catálogo</Link>
                         </div>
                     </>
             }
